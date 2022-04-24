@@ -1,4 +1,5 @@
 var port = process.env.PORT || 5000;
+const { response } = require("express");
 var express = require("express");
 var app = express();
 
@@ -34,18 +35,32 @@ const Albums = mongoose.model(
 //Haetaan kaikki tietokannassa olevat dokumentit.
 app.get("/api/getall", function(req, res) {
     Albums.find({}, function(err, results) {
-        if (err) console.log(err);
-        console.log(results);
-        res.json(results, 200); //Palautetaan tulokset
+        if(err){
+            console.log(err);
+            res.json("An error has occurred in the server.", 500);
+        }
+        else{
+            console.log(results);
+            res.json(results, 200); //Palautetaan tulokset
+        }
     });
 });
 
 //Haetaan tietokannasta dokumetti ID:n avulla.
 app.get("/api/:id", function(req, res) {
-    Albums.find({_id: req.params.id}, function(err, results) {
-        if (err) console.log(err);
-        console.log(results);
-        res.json(results, 200); //Palautetaan tulokset
+    Albums.find({_id: req.params.id}, function(err, result) {
+        if(err){
+            console.log(err);
+            res.json("An error has occurred in the server.", 500);
+        }
+        //Jos syötettyä ID:tä ei löydy, palatuetaan siitä viesti käyttäjälle.
+        else if(Object.keys(result).length === 0) {
+            res.json("ID not found.", 404);
+        }
+        else{
+            console.log(result);
+            res.json(result, 200); //Palautetaan tulokset
+        }
     });
 })
 
@@ -64,9 +79,14 @@ app.post("/api/add", function(req, res) {
 
     //Tämä tallentaa uuden albumin tietokantaan tai antaa virheilmoituksen jos jokin menee pieleen.
     newAlbum.save(function(err, result) {
-        if (err) console.log(err);
-        console.log("New album saved to the database: " + result);
-        res.json(result, 200); //Palautetaan vielä lähetetyt tiedot takaisin, jotta niiden oikeellisuuden voi heti tarkistaa.
+        if(err){
+            console.log(err);
+            res.json("An error has occurred in the server.", 500);
+        }
+        else{
+            console.log("New album saved to the database: " + result);
+            res.json(result, 200); //Palautetaan vielä lähetetyt tiedot takaisin, jotta niiden oikeellisuuden voi heti tarkistaa.
+        }
     });
 });
 
@@ -86,22 +106,38 @@ app.put("/api/update/:id", function(req, res) {
             catno: req.query.catno,
             cover: req.query.cover
         },
-        function(err) {
-            if (err) console.log(err);
-            //Yritin tässä vaiheessa palauttaa muokatun dokumentin, mutta API palautti dokumentin vanhan version sen sijaan. 
-            //Tästä syystä annamme käyttäjälle seuraavan viestin:
-            console.log("Album with the following ID has been updated: " + id);
-            res.json("Album with the following ID has been updated: " + id); 
+        function(err, result) {
+            if (err){
+                console.log(err);
+                res.json("An error has occurred in the server.", 500);
+            }
+            else if(Object.keys(result).length === 0) {
+                res.json("ID not found.", 404);
+            }
+            else{
+                //Yritin tässä vaiheessa palauttaa muokatun dokumentin, mutta API palautti dokumentin vanhan version sen sijaan. 
+                //Tästä syystä annamme käyttäjälle seuraavan viestin:
+                console.log("Album with the following ID has been updated: " + id);
+                res.json("Album with the following ID has been updated: " + id, 200);
+            }
     });
 });
 
 //Poistetaan jokin dokumentti ID:n perusteella.
 app.delete("/api/delete/:id", function(req, res) {
     var id = req.params.id;
-    Albums.findByIdAndDelete(id, function(err) {
-        if (err) console.log(err);
-        console.log(id + " has been deleted from the database.");
-        res.json(id + " has been deleted from the database.")
+    Albums.findByIdAndDelete(id, function(err, result) {
+        if(err){
+            console.log(err);
+            res.json("An error has occurred in the server.", 500);
+        }
+        else if(Object.keys(result).length === 0) {
+            res.json("ID not found.", 404);
+        }
+        else{
+            console.log(id + " has been deleted from the database.");
+            res.json(id + " has been deleted from the database.", 200);
+        }
     });
 });
 
