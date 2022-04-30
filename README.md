@@ -10,7 +10,8 @@ Tämä data on tallennettuna MongoDB tietokannassa. API:ssa on 5 eri reittiä.
 
 2. /api/:id - Hakee tietokannasta yhden dokumentin syötetyn ID:n perusteella.
 
-3. /api/add - Lisää tietokantaan uuden dokumentin. Dokumentin arvot syötetään URL parametreina. **Esimerkki:** /api/add/?title=Zero+Point&artist=Rob+Clouth&year=2020&label=Mesh&catno=MESH029&cover=https://f4.bcbits.com/img/a3010879936_10.jpg
+3. /api/add - Lisää tietokantaan uuden dokumentin. Dokumentin arvot syötetään URL parametreina. 
+  - **Esimerkki:** /api/add/?title=Zero+Point&artist=Rob+Clouth&year=2020&label=Mesh&catno=MESH029&cover=https://f4.bcbits.com/img/a3010879936_10.jpg
 
 4. /api/update/:id - Päivittää yhden dokumentin annetun ID:n perusteella. Käyttäjä itse syöttää ne paramterit, jotka haluaa päivittää ja antaa niille uudet arvot.
 
@@ -30,7 +31,8 @@ The data is stored on a MongoDB database. The API has 5 different routes.
 
 2. /api/:id - Fetches data from a single document based on the given ID.
 
-3. /api/add - Adds a new document to the database. The document values are provided as URL parameters. **Example:** /api/add/?title=Zero+Point&artist=Rob+Clouth&year=2020&label=Mesh&catno=MESH029&cover=https://f4.bcbits.com/img/a3010879936_10.jpg
+3. /api/add - Adds a new document to the database. The document values are provided as URL parameters. 
+  - **Example:** /api/add/?title=Zero+Point&artist=Rob+Clouth&year=2020&label=Mesh&catno=MESH029&cover=https://f4.bcbits.com/img/a3010879936_10.jpg
 
 4. /api/update/:id - Updates a single document based on the given ID. The user inputs only the parameters they want to update and gives them new values.
 
