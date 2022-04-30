@@ -111,7 +111,7 @@ app.put("/api/update/:id", function(req, res) {
                 console.log(err);
                 res.json("An error has occurred in the server.", 500);
             }
-            else if(Object.keys(result).length === 0) {
+            else if(result == null) {
                 res.json("ID not found.", 404);
             }
             else{
@@ -131,7 +131,7 @@ app.delete("/api/delete/:id", function(req, res) {
             console.log(err);
             res.json("An error has occurred in the server.", 500);
         }
-        else if(Object.keys(result).length === 0) {
+        else if(result == null) {
             res.json("ID not found.", 404);
         }
         else{
