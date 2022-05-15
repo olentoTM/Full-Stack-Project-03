@@ -17,7 +17,7 @@ Tämä data on tallennettuna MongoDB tietokannassa. API:ssa on 8 eri reittiä.
 5. /api/label/:label - Hakee tietokannasta kaikki dokumentit, joissa on sama levy-yhtiön nimi. (Kirjainkoko herkkä! Tulee kirjoittaa täysin samalla tavalla kuin tietokannassa. Muuten dokumentteja ei löydy.)
 
 6. /api/add - Lisää tietokantaan uuden dokumentin. Dokumentin arvot syötetään URL parametreina. 
-  - **Esimerkki:** /api/add/?title=Zero+Point&artist=Rob+Clouth&year=2020&label=Mesh&catno=MESH029&cover=https://f4.bcbits.com/img/a3010879936_10.jpg
+  - **Esimerkki:** /api/add/?title=Zero+Point&artist=Rob+Clouth&year=2020&label=Mesh&catno=MESH029&cover=https://f4.bcbits.com/img/a3010879936_10.jpg (Toimii Postman palvelussa)
 
 7. /api/update/:id - Päivittää yhden dokumentin annetun ID:n perusteella. Käyttäjä itse syöttää ne paramterit, jotka haluaa päivittää ja antaa niille uudet arvot.
 
@@ -44,7 +44,7 @@ The data is stored on a MongoDB database. The API has 8 different routes.
 5. /api/label/:label - Fetches all documents that have the same label name (Case sensitive! Has to be written exactly as it is in the database. Otherwise documents are not found.)
 
 6. /api/add - Adds a new document to the database. The document values are provided as URL parameters. 
-  - **Example:** /api/add/?title=Zero+Point&artist=Rob+Clouth&year=2020&label=Mesh&catno=MESH029&cover=https://f4.bcbits.com/img/a3010879936_10.jpg
+  - **Example:** /api/add/?title=Zero+Point&artist=Rob+Clouth&year=2020&label=Mesh&catno=MESH029&cover=https://f4.bcbits.com/img/a3010879936_10.jpg (Works in Postman)
 
 7. /api/update/:id - Updates a single document based on the given ID. The user inputs only the parameters they want to update and gives them new values.
 
