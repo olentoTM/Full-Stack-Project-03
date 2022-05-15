@@ -44,7 +44,7 @@ The data is stored on a MongoDB database. The API has 8 different routes.
 5. /api/label/:label - Fetches all documents that have the same label name (Case sensitive! Has to be written exactly as it is in the database. Otherwise documents are not found.)
 
 6. /api/add - Adds a new document to the database. The document values are provided as URL parameters. 
-  - **Example:** /api/add/?title=Zero+Point&artist=Rob+Clouth&year=2020&label=Mesh&catno=MESH029&cover=https://f4.bcbits.com/img/a3010879936_10.jpg (Adding the link to the cover artwork doesn't always work like this. The above example works well when passed through Postman.)
+  - **Example:** /api/add/?title=Zero+Point&artist=Rob+Clouth&year=2020&label=Mesh&catno=MESH029&cover=https://f4.bcbits.com/img/a3010879936_10.jpg (Adding the link to the cover artwork doesn't always work like this. The example works well when passed through Postman.)
 
 7. /api/update/:id - Updates a single document based on the given ID. The user inputs only the parameters they want to update and gives them new values.
 
