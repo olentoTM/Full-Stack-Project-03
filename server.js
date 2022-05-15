@@ -51,15 +51,66 @@ app.get("/api/:id", function(req, res) {
     Albums.find({_id: req.params.id}, function(err, result) {
         if(err){
             console.log(err);
-            res.json("An error has occurred in the server.", 500);
+            res.status(500).json("An error has occurred in the server.");
         }
         //Jos syötettyä ID:tä ei löydy, palatuetaan siitä viesti käyttäjälle.
         else if(Object.keys(result).length === 0) {
-            res.json("ID not found.", 404);
+            res.status(404).json("ID not found.");
         }
         else{
             console.log(result);
-            res.json(result, 200); //Palautetaan tulokset
+            res.status(200).json(result); //Palautetaan tulokset
+        }
+    });
+})
+
+//Haetaan tässä kohtaa voi hakea artistin nimen perusteella.
+app.get("/api/artist/:artist", function(req, res) {
+    Albums.find({artist: req.params.artist}, function(err, result) {
+        if(err){
+            console.log(err);
+            res.status(500).json("An error has occurred in the server.");
+        }
+        else if(Object.keys(result).length === 0) {
+            res.status(404).json("Artist not found.");
+        }
+        else{
+            console.log(result);
+            res.status(200).json(result); //Palautetaan tulokset
+        }
+    });
+})
+
+//Tässä kohtaa voi hakea albumin nimen perusteella.
+app.get("/api/album/:title", function(req, res) {
+    Albums.find({title: req.params.title}, function(err, result) {
+        if(err){
+            console.log(err);
+            res.status(500).json("An error has occurred in the server.");
+        }
+        else if(Object.keys(result).length === 0) {
+            res.status(404).json("Album not found.");
+        }
+        else{
+            console.log(result);
+            res.status(200).json(result); //Palautetaan tulokset
+        }
+    });
+})
+
+//Tässä kohtaa voi hakea levy-yhtiön nimen perusteella.
+app.get("/api/label/:label", function(req, res) {
+    Albums.find({label: req.params.label}, function(err, result) {
+        if(err){
+            console.log(err);
+            res.status(500).json("An error has occurred in the server.");
+        }
+        else if(Object.keys(result).length === 0) {
+            res.status(404).json("Label not found.");
+        }
+        else{
+            console.log(result);
+            res.status(200).json(result); //Palautetaan tulokset
         }
     });
 })
@@ -81,11 +132,11 @@ app.post("/api/add", function(req, res) {
     newAlbum.save(function(err, result) {
         if(err){
             console.log(err);
-            res.json("An error has occurred in the server.", 500);
+            res.status(500).json("An error has occurred in the server.");
         }
         else{
             console.log("New album saved to the database: " + result);
-            res.json(result, 200); //Palautetaan vielä lähetetyt tiedot takaisin, jotta niiden oikeellisuuden voi heti tarkistaa.
+            res.status(200).json(result); //Palautetaan vielä lähetetyt tiedot takaisin, jotta niiden oikeellisuuden voi heti tarkistaa.
         }
     });
 });
@@ -109,16 +160,16 @@ app.put("/api/update/:id", function(req, res) {
         function(err, result) {
             if (err){
                 console.log(err);
-                res.json("An error has occurred in the server.", 500);
+                res.status(500).json("An error has occurred in the server.");
             }
             else if(result == null) {
-                res.json("ID not found.", 404);
+                res.status(404).json("ID not found.");
             }
             else{
                 //Yritin tässä vaiheessa palauttaa muokatun dokumentin, mutta API palautti dokumentin vanhan version sen sijaan. 
                 //Tästä syystä annamme käyttäjälle seuraavan viestin:
                 console.log("Album with the following ID has been updated: " + id);
-                res.json("Album with the following ID has been updated: " + id, 200);
+                res.status(200).json("Album with the following ID has been updated: " + id);
             }
     });
 });
@@ -129,14 +180,14 @@ app.delete("/api/delete/:id", function(req, res) {
     Albums.findByIdAndDelete(id, function(err, result) {
         if(err){
             console.log(err);
-            res.json("An error has occurred in the server.", 500);
+            res.status(500).json("An error has occurred in the server.");
         }
         else if(result == null) {
-            res.json("ID not found.", 404);
+            res.status(404).json("ID not found.");
         }
         else{
             console.log(id + " has been deleted from the database.");
-            res.json(id + " has been deleted from the database.", 200);
+            res.status(200).json(id + " has been deleted from the database.");
         }
     });
 });
