@@ -17,7 +17,7 @@ Tämä data on tallennettuna MongoDB tietokannassa. API:ssa on 8 eri reittiä.
 5. /api/label/:label - Hakee tietokannasta kaikki dokumentit, joissa on sama levy-yhtiön nimi. (Kirjainkoko herkkä! Tulee kirjoittaa täysin samalla tavalla kuin tietokannassa. Muuten dokumentteja ei löydy.)
 
 6. /api/add - Lisää tietokantaan uuden dokumentin. Dokumentin arvot syötetään URL parametreina. 
-  - **Esimerkki:** /api/add/?title=Zero+Point&artist=Rob+Clouth&year=2020&label=Mesh&catno=MESH029&cover=https://f4.bcbits.com/img/a3010879936_10.jpg (Kansikuvalinkin laittaminen ei välttämättä toimi kaikissa tapauksissa. Tämä esimerkki toimii kuitenkin Postman palvelun kautta hyvin.)
+  - **Esimerkki:** /api/add/?title=Zero+Point&artist=Rob+Clouth&year=2020&label=Mesh&catno=MESH029&cover=https://f4.bcbits.com/img/a3010879936_10.jpg (Kansikuvalinkin laittaminen ei välttämättä toimi aina tällä tavalla. Tämä esimerkki toimii kuitenkin Postman palvelun kautta hyvin.)
 
 7. /api/update/:id - Päivittää yhden dokumentin annetun ID:n perusteella. Käyttäjä itse syöttää ne paramterit, jotka haluaa päivittää ja antaa niille uudet arvot.
 
