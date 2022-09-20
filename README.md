@@ -1,7 +1,5 @@
 # Full-Stack-Project-03
-DEMO: https://fs-project-03.herokuapp.com/ (HUOM! Ei graafista käyttöliittymää! // NOTE! No graphical user interface!)
-
-(16.9.2022: HUOM! API ei juuri nyt toimi jostain syystä. Yritän korjata asian jossain vaiheessa. // NOTE! API does not work at the moment. I will try to fix it at some point.)
+DEMO: https://fs-project-03.herokuapp.com/ (HUOM! Ei graafista käyttöliittymää! Käytä Postmania tai vastaavaa palvelua. Myös reittien kirjoittaminen suoraan osoiteriville voi onnistua. // NOTE! No graphical user interface! Use Postman or similar service. Writing the routes directly to the address bar may also work.)
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
